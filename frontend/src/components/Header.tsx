@@ -14,7 +14,7 @@ export default function Header(){
 
     return (
         // TODO small screen header reorg
-        // if on other page, redirect + scroll --> probably pass a hash
+        // TODO if on other page, redirect + scroll --> probably pass a hash
         <div className="flex flex-row w-full justify-between h-12 mt-2 px-2 bg-purple-900">
             {/* UI Change button */}
             <div className="flex w-30 justify-center">

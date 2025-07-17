@@ -1,20 +1,40 @@
 import { useState } from "react";
+import validator from 'validator'
 
 export default function HomePage(){
     const goToPrivacyPolicy = () => {
         window.location.href = '/PrivacyPolicy';
     }
 
-    const [currentEmail, setCurrentEmail] = useState<string>()
+    const [currentEmail, setCurrentEmail] = useState<string>("")
     const [subscribedText, setSubscribedText] = useState<string>("")
 
     const subscribeEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubscribedText("")
         
-        // sanitizing code
+        // sanitize email //
+        var email = currentEmail.trim()
+        if (!validator.isEmail(email)) throw new Error("Invalid email")
+        const [local, domain] = email.split('@');
 
-        // if works
+        // some email rules
+        if (local.length > 64) throw new Error("Invalid email")
+        if (domain.length > 255) throw new Error("Invalid email")
+        email = local + '@' + domain.toLowerCase();
+        if (email.length > 254) throw new Error("Invalid email")
+
+        // replace weird chars
+        email = email.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+        
+        // backend call //
+        try {
+            
+        } catch {
+
+        }
+
+        // set vars
         setCurrentEmail("")
         setSubscribedText("Subscribed!")
     }
@@ -90,7 +110,7 @@ export default function HomePage(){
                 <a onClick={goToPrivacyPolicy} className="cursor-pointer underline text-purple-500 hover:text-purple-600">Privacy Policy</a>
                 <form className="flex flex-col items-center" onSubmit={subscribeEmail}>
                     <input
-                        className="bg-white text-gray-800 my-2 px-2 w-80"
+                        className="bg-white text-gray-800 my-2 px-2 w-80 rounded-md"
                         type="text"
                         placeholder="Enter your email here"
                         value={currentEmail}
