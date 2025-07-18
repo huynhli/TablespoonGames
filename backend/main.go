@@ -8,7 +8,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
+	"github.com/asaskevich/govalidator"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
@@ -47,36 +49,57 @@ func createEmail(c *fiber.Ctx) error {
 	}
 	var payload EmailPayload
 	if err := c.BodyParser(&payload); err != nil {
-		return c.Status(fiber.StatusBadRequest).SendString("Invalid JSON")
+		return c.Status(fiber.StatusBadRequest).SendString("Invalid JSON.")
 	}
 
 	fmt.Println("Received email:", payload.Email)
 	email := payload.Email
 
 	// sanitize again for security ?
+	if !govalidator.IsEmail(email) {
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
+	}
+	trimmedEmail := strings.TrimSpace(email)
+	splitEmail := strings.Split(trimmedEmail, "@")
+	if len(splitEmail[0]) > 64 {
+		fmt.Println("Error length:")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
+	}
+	if len(splitEmail[1]) > 64 {
+		fmt.Println("Error length:")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
+	}
+	sanitizedEmail := splitEmail[0] + "@" + strings.ToLower(splitEmail[1])
+	if len(sanitizedEmail) > 254 {
+		fmt.Println("Error length:")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
+	}
+
+	fullySanitizedEmail := sanitizeEmailHelper(sanitizedEmail)
+
+	// env vars
+	supabaseAPIKey := os.Getenv("SUPABASE_API_KEY")
+	supabaseURL := os.Getenv("SUPABASE_URL")
 
 	// check for duplicates
 
 	// insert into db
-	supabaseAPIKey := os.Getenv("SUPABASE_API_KEY")
-	supabaseURL := os.Getenv("SUPABASE_URL")
 	data := map[string]string{
-		"email": email,
+		"email": fullySanitizedEmail,
 	}
 
 	fmt.Println("marshalling")
 	jsonData, err := json.Marshal(data)
 	if err != nil {
 		fmt.Println("Error marshalling:", err)
-		return fiber.NewError(fiber.StatusInternalServerError, "Server error")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
 	}
 
 	fmt.Println("structuring post req")
-	fmt.Println("Supabase URL:", supabaseURL)
 	req, err := http.NewRequest("POST", supabaseURL+"/rest/v1/subscribers", bytes.NewBuffer(jsonData))
 	if err != nil {
 		fmt.Println("Error creating HTTP request:", err)
-		return fiber.NewError(fiber.StatusInternalServerError, "Server error")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
 	}
 
 	req.Header.Set("apikey", supabaseAPIKey)
@@ -89,21 +112,34 @@ func createEmail(c *fiber.Ctx) error {
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Error sending HTTP request:", err)
-		return fiber.NewError(fiber.StatusInternalServerError, "Server error")
+		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
 	}
 	defer resp.Body.Close()
 	bodyBytes, _ := io.ReadAll(resp.Body)
 	fmt.Println("Supabase response:", string(bodyBytes))
 
 	fmt.Println("loading resp")
-	if resp.StatusCode != http.StatusCreated {
+	if resp.StatusCode == http.StatusConflict {
+		return c.Status(409).JSON(fiber.Map{"error": "Email already subscribed."})
+	} else if resp.StatusCode != http.StatusCreated {
 		fmt.Println("error")
-		return fiber.NewError(fiber.StatusInternalServerError, "Failed to add article")
+		return fiber.NewError(fiber.StatusInternalServerError, "Failed to add email.")
 	} else {
 		fmt.Println("success")
 		return c.Status(fiber.StatusCreated).JSON(fiber.Map{
-			"message": "Email added successfully"})
+			"message": "Email added successfully!"})
 	}
+}
+
+func sanitizeEmailHelper(email string) string {
+	var builder strings.Builder
+	for _, r := range email {
+		if (r >= 0x00 && r <= 0x1F) || (r >= 0x7F && r <= 0x9F) {
+			continue
+		}
+		builder.WriteRune(r)
+	}
+	return builder.String()
 }
 
 func deleteEmail(c *fiber.Ctx) error {
