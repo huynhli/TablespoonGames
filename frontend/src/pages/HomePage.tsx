@@ -19,7 +19,7 @@ export default function HomePage(){
 
     const mutation = useMutation({
     mutationFn: async (email: string) => {
-        const backendUrl = import.meta.env.VITE_API_URL
+        const backendUrl = import.meta.env.VITE_BACKEND_URL
         const res = await fetch(backendUrl + "/Email", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
