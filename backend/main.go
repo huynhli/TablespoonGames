@@ -148,7 +148,7 @@ func deleteEmail(c *fiber.Ctx) error {
 
 func SetupCors(app *fiber.App) {
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:5173",
+		AllowOrigins: "http://localhost:5173, https://tablespoongames.pages.dev/",
 		AllowMethods: "GET,POST,PUT,DELETE",
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 	}))
