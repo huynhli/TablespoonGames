@@ -19,7 +19,8 @@ export default function HomePage(){
 
     const mutation = useMutation({
     mutationFn: async (email: string) => {
-        const res = await fetch("http://localhost:3000/Email", {
+        const backendUrl = import.meta.env.VITE_API_URL
+        const res = await fetch(backendUrl + "/Email", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
@@ -92,6 +93,7 @@ export default function HomePage(){
             <div className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Licht</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
+                <img/>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     <i>Licht</i> is a 2D isometric dystopia about a lost civilization, a world of robots, and a boy who finds himself connecting the two. 
                     Inspired by games such as <i>The Legend of Zelda</i>, <i>Hades</i>, and <i>Hyperlight Drifter</i>, <i>Licht</i> is driven by story, 
