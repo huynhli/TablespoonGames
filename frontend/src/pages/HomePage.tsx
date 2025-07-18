@@ -18,28 +18,28 @@ export default function HomePage(){
     const [subscribedText, setSubscribedText] = useState<string>("")
 
     const mutation = useMutation({
-    mutationFn: async (email: string) => {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL
-        const res = await fetch(backendUrl + "/Email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email }),
-        })
+        mutationFn: async (email: string) => {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL
+            const res = await fetch(backendUrl + "/Email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            })
 
-        const json = await res.json()
+            const json = await res.json()
 
-        if (!res.ok) {
-            throw new Error(json.error || "Failed to subscribe. Try again.")
-        }
-        return json.message
-    },
-    onSuccess: (message) => {
-        setSubscribedText(message || "Subscribed!")
-        setCurrentEmail("")
-    },
-    onError: (error: any) => {
-        setSubscribedText(`Error subscribing: ${error.message}`)
-    },
+            if (!res.ok) {
+                throw new Error(json.error || "Failed to subscribe. Try again.")
+            }
+            return json.message
+        },
+        onSuccess: (message) => {
+            setSubscribedText(message || "Subscribed!")
+            setCurrentEmail("")
+        },
+        onError: (error: any) => {
+            setSubscribedText(`Error subscribing: ${error.message}`)
+        },
     })
 
     const subscribeEmail = (e: React.FormEvent<HTMLFormElement>) => {
