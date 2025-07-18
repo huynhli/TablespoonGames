@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState } from "react"
 import validator from 'validator'
+import { useMutation } from "@tanstack/react-query"
 
 export default function HomePage(){
     const goToPrivacyPolicy = () => {
@@ -9,35 +10,50 @@ export default function HomePage(){
     const [currentEmail, setCurrentEmail] = useState<string>("")
     const [subscribedText, setSubscribedText] = useState<string>("")
 
+    const mutation = useMutation({
+    mutationFn: async (email: string) => {
+        const res = await fetch("http://localhost:3000/Email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+        });
+        if (!res.ok) {
+            throw new Error("Failed to subscribe");
+        }
+        return res.text(); // or res.json()
+    },
+    onSuccess: () => {
+        setSubscribedText("Subscribed!");
+        setCurrentEmail("");
+    },
+    onError: () => {
+        setSubscribedText("Error subscribing. Try again.");
+    },
+    });
+
     const subscribeEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubscribedText("")
         
         // sanitize email //
         var email = currentEmail.trim()
-        if (!validator.isEmail(email)) throw new Error("Invalid email")
+        if (!validator.isEmail(email)) console.log("invalid")
         const [local, domain] = email.split('@');
 
         // some email rules
-        if (local.length > 64) throw new Error("Invalid email")
-        if (domain.length > 255) throw new Error("Invalid email")
+        if (local.length > 64) console.log("Invalid email")
+        if (domain.length > 255) console.log("Invalid email")
         email = local + '@' + domain.toLowerCase();
-        if (email.length > 254) throw new Error("Invalid email")
+        if (email.length > 254) console.log("Invalid email")
 
         // replace weird chars
         email = email.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
         
-        // backend call //
-        try {
-            
-        } catch {
-
-        }
-
-        // set vars
-        setCurrentEmail("")
-        setSubscribedText("Subscribed!")
+        // backend call /
+        mutation.mutate(email);
     }
+
+    
 
     return (
         <div className="flex flex-col items-center min-h-screen w-200 mx-auto py-20 bg-zinc-900">
@@ -117,7 +133,7 @@ export default function HomePage(){
                         onChange={(e) => setCurrentEmail(e.target.value)}
                         required
                     />
-                    <button className="cursor-pointer rounded-lg p-1 px-3 w-50 bg-zinc-400 hover:bg-zinc-500">Subscribe!</button>
+                    <button className="cursor-pointer rounded-lg p-1 px-3 w-50 bg-zinc-400 hover:bg-zinc-500" disabled={mutation.isPending}>{mutation.isPending ? "Subscribing" : "Subscribe!"}</button>
                 </form>
                 <p className="">{subscribedText}</p>
             </div>
