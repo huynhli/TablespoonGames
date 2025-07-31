@@ -74,7 +74,7 @@ export default function HomePage(){
             
             {/* Logo w/ slogan */}
             <div className={`flex flex-col items-center justify-center mb-10 mt-2`}>
-                <img src="tbsp_games_logo.png" className="max-h-50 mb-3 "/><></>
+                <img src="tbsp_games_logo_new.png" className={` max-h-50 mb-3 ${darkMode ? `invert` : ``} `}/><></>
                 <h1 className={`italic bold text-[clamp(1rem,4vw,2rem)] ${darkMode ? `text-white` : `text-zinc-900`}`}>bite-sized adventures</h1>
             </div>
 
