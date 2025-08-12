@@ -111,7 +111,7 @@ export default function HomePage(){
                 <div className={`flex flex-row py-2`}>
                     <div className={`flex flex-col w-[50%] items-center`}>
                         <h2 className={`mt-3 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Liam Huynh</h2>
-                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Principal Designer</h3>
+                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Web Developer</h3>
                             <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/liam-huynh-91aa1a1a1/" className="underline text-purple-500 hover:text-purple-600">@liamhuynh</a>
                         <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Andrew Wang</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Lead Composer</h3>
