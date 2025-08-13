@@ -2,12 +2,14 @@ import { useState } from "react"
 import validator from 'validator'
 import { useMutation } from "@tanstack/react-query"
 import { useOutletContext } from "react-router-dom" 
+import { Helmet } from "react-helmet-async"
 
 interface OutletContext {
     darkMode: boolean
 }
 
 export default function HomePage(){
+
     const { darkMode } = useOutletContext<OutletContext>()
 
     const goToPrivacyPolicy = () => {
@@ -71,15 +73,20 @@ export default function HomePage(){
 
     return (
         <div className={`flex flex-col items-center min-h-screen w-200 mx-auto py-20 ${ darkMode ? `bg-zinc-900` : `bg-white`}`}>
-            
+            <Helmet>
+                <title>tbsp games</title>
+                <meta name="description" content="Join the tbsp games team and help create bite-sized adventures like Licht." />
+                <link rel="canonical" href="https://tablespoongames.pages.dev/Jobs" />
+            </Helmet>
             {/* Logo w/ slogan */}
-            <div className={`flex flex-col items-center justify-center mb-10 mt-2`}>
-                <img src="tbsp_games_logo_new.png" className={` max-h-50 mb-3 ${darkMode ? `invert` : ``} `}/><></>
+            <section className={`flex flex-col items-center justify-center mb-10 mt-2`}>
+                <img loading="lazy" src="tbsp_games_logo_new.png" className={` max-h-50 mb-3 ${darkMode ? `invert` : ``} `} alt="tbsp games logo"/><></>
+                <h1 className="hidden">tbsp table spoon games</h1>
                 <h1 className={`italic bold text-[clamp(1rem,4vw,2rem)] ${darkMode ? `text-white` : `text-zinc-900`}`}>bite-sized adventures</h1>
-            </div>
+            </section>
 
             {/* About */}
-            <div className={`w-150 p-3 mx-20 my-8 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="about" className={`w-150 p-3 mx-20 my-8 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>About</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
@@ -87,10 +94,10 @@ export default function HomePage(){
                     international creatives that have a love and passion for making games that are not too big, and not too small.
                     Currently, we are developing <a target="_blank" rel="noopener noreferrer" href="liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">Licht</a>, a 2D story-driven action puzzle game.
                 </p>
-            </div>
+            </section>
 
             {/* Games */}
-            <div className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="games" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Licht</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <img/>
@@ -102,16 +109,16 @@ export default function HomePage(){
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     Follow along with our journey <a target="_blank" rel="noopener noreferrer" href="liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">here!</a>
                 </p>
-            </div>
+            </section>
 
             {/* Team */}
-            <div className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="team" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Team</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <div className={`flex flex-row py-2`}>
                     <div className={`flex flex-col w-[50%] items-center`}>
                         <h2 className={`mt-3 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Liam Huynh</h2>
-                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Web Developer</h3>
+                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Principal Designer, Web Developer</h3>
                             <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/liam-huynh-91aa1a1a1/" className="underline text-purple-500 hover:text-purple-600">@liamhuynh</a>
                         <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Andrew Wang</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Lead Composer</h3>
@@ -129,11 +136,11 @@ export default function HomePage(){
                             <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jannahkandil_/" className="underline text-purple-500 hover:text-purple-600">@jannahkandil_</a>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Newsletter w/ Privacy Policy */}
             {/* also sanitize */}
-            <div className={`flex flex-col w-150 p-3 mx-20 my-7 mb-100 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section className={`flex flex-col w-150 p-3 mx-20 my-7 mb-100 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Newsletter</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
@@ -152,7 +159,7 @@ export default function HomePage(){
                     <button className="cursor-pointer rounded-lg p-1 px-3 w-50 bg-zinc-400 hover:bg-zinc-500" disabled={mutation.isPending}>{mutation.isPending ? "Subscribing" : "Subscribe!"}</button>
                 </form>
                 <p className="">{subscribedText}</p>
-            </div>
+            </section>
 
         </div>
     )
