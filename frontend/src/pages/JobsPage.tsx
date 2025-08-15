@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "react-helmet"
 import useChangeTitle from "../components/useChangeTitle"
 
 export default function JobsPage(){

@@ -2,7 +2,7 @@ import { useState } from "react"
 import validator from 'validator'
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate, useOutletContext } from "react-router-dom" 
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "react-helmet"
 
 interface OutletContext {
     darkMode: boolean
