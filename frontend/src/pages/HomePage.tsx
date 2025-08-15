@@ -1,7 +1,7 @@
 import { useState } from "react"
 import validator from 'validator'
 import { useMutation } from "@tanstack/react-query"
-import { useOutletContext } from "react-router-dom" 
+import { useNavigate, useOutletContext } from "react-router-dom" 
 import { Helmet } from "react-helmet-async"
 
 interface OutletContext {
@@ -12,8 +12,9 @@ export default function HomePage(){
 
     const { darkMode } = useOutletContext<OutletContext>()
 
+    const navigate = useNavigate()
     const goToPrivacyPolicy = () => {
-        window.location.href = '/PrivacyPolicy'
+        navigate('/PrivacyPolicy')
     }
 
     const [currentEmail, setCurrentEmail] = useState<string>("")
@@ -100,14 +101,14 @@ export default function HomePage(){
             <section id="games" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Licht</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
-                <img/>
+                <img src="player_initial_sketch.png" className="px-[11%] py-[2%]"/>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     <i>Licht</i> is a 2D isometric dystopia about a lost civilization, a world of robots, and a boy who finds himself connecting the two. 
                     Inspired by games such as <i>The Legend of Zelda</i>, <i>Hades</i>, and <i>Hyperlight Drifter</i>, <i>Licht</i> is driven by story, 
                     action-packed fighting, and puzzles to create a unique single-player experience.
                 </p>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
-                    Follow along with our journey <a target="_blank" rel="noopener noreferrer" href="liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">here!</a>
+                    Follow along with our journey <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">here!</a>
                 </p>
             </section>
 
