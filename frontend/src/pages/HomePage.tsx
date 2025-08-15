@@ -87,21 +87,21 @@ export default function HomePage(){
             </section>
 
             {/* About */}
-            <section id="about" className={`w-150 p-3 mx-20 my-8 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="about" className={`w-150 p-3 mx-20 my-8 ${darkMode ? `bg-purple-800` : `bg-purple-400`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>About</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     Founded in 2025 in Toronto, Canada, tbsp games is a team of diverse, 
                     international creatives that have a love and passion for making games that are not too big, and not too small.
-                    Currently, we are developing <a target="_blank" rel="noopener noreferrer" href="liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">Licht</a>, a 2D story-driven action puzzle game.
+                    Currently, we are developing <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">Licht</a>, a 2D story-driven action puzzle game.
                 </p>
             </section>
 
             {/* Games */}
-            <section id="games" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="games" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-400`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Licht</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
-                <img src="player_initial_sketch.png" className="px-[11%] py-[2%]"/>
+                <img src="player_initial_sketch.png" loading="lazy" className="px-[11%] py-[2%]"/>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     <i>Licht</i> is a 2D isometric dystopia about a lost civilization, a world of robots, and a boy who finds himself connecting the two. 
                     Inspired by games such as <i>The Legend of Zelda</i>, <i>Hades</i>, and <i>Hyperlight Drifter</i>, <i>Licht</i> is driven by story, 
@@ -113,7 +113,7 @@ export default function HomePage(){
             </section>
 
             {/* Team */}
-            <section id="team" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section id="team" className={`w-150 p-3 mx-20 my-7 ${darkMode ? `bg-purple-800` : `bg-purple-400`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Team</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <div className={`flex flex-row py-2`}>
@@ -141,7 +141,7 @@ export default function HomePage(){
 
             {/* Newsletter w/ Privacy Policy */}
             {/* also sanitize */}
-            <section className={`flex flex-col w-150 p-3 mx-20 my-7 mb-100 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+            <section className={`flex flex-col w-150 p-3 mx-20 my-7 mb-100 ${darkMode ? `bg-purple-800` : `bg-purple-400`}`}>
                 <h1 className={`text-3xl ${ darkMode ? `text-white` : `text-zinc-900`}`}>Newsletter</h1>
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>

@@ -16,13 +16,13 @@ export default function Header({ onToggleTheme, darkMode: darkMode} : HeaderProp
     return (
         // TODO small screen header reorg
         // TODO if on other page, redirect + scroll --> probably pass a hash
-        <header className={`flex flex-row w-full justify-between h-12 px-2 ${darkMode ? `bg-purple-800` : `bg-purple-700`}`}>
+        <header className={`flex flex-row w-full justify-between h-12 px-2 ${darkMode ? `bg-purple-800` : `bg-purple-400`}`}>
             {/* UI Change button */}
             <div className="flex w-30 justify-center">
-                <button onClick={onToggleTheme} className={`transition-all cursor-pointer font-medium duration-200 self-center px-2 py-1 bg-purple-600 rounded-lg active:bg-purple-900 ${
+                <button onClick={onToggleTheme} className={`transition-all cursor-pointer font-medium duration-200 self-center px-2 py-1 rounded-lg active:bg-purple-900 ${
                     darkMode
-                    ? 'text-white hover:text-zinc-900 hover:bg-purple-700' 
-                    : 'text-zinc-900 hover:text-white hover:bg-purple-800'
+                    ? 'bg-purple-600 text-white hover:text-zinc-900 hover:bg-purple-400' 
+                    : 'bg-purple-500 text-zinc-900 hover:text-white hover:bg-purple-800'
                     }`}>{darkMode ? "Light mode" : "Dark mode"}</button>
             </div>
 
