@@ -2,13 +2,14 @@ import { useState } from "react"
 import validator from 'validator'
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate, useOutletContext } from "react-router-dom" 
-import { Helmet } from "react-helmet"
+import useChangeTitle from "../components/useChangeTitle"
 
 interface OutletContext {
     darkMode: boolean
 }
 
 export default function HomePage(){
+    useChangeTitle("tbsp games - bite-sized adventures")
 
     const { darkMode } = useOutletContext<OutletContext>()
 
@@ -74,11 +75,7 @@ export default function HomePage(){
 
     return (
         <div className={`flex flex-col items-center min-h-screen w-200 mx-auto py-20 ${ darkMode ? `bg-zinc-900` : `bg-white`}`}>
-            <Helmet>
-                <title>tbsp games</title>
-                <meta name="description" content="Join the tbsp games team and help create bite-sized adventures like Licht." />
-                <link rel="canonical" href="https://tablespoongames.pages.dev/Jobs" />
-            </Helmet>
+
             {/* Logo w/ slogan */}
             <section className={`flex flex-col items-center justify-center mb-10 mt-2`}>
                 <img loading="lazy" src="tbsp_games_logo_new.png" className={` max-h-50 mb-3 ${darkMode ? `invert` : ``} `} alt="tbsp games logo"/><></>
