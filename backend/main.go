@@ -55,7 +55,7 @@ func createEmail(c *fiber.Ctx) error {
 	fmt.Println("Received email:", payload.Email)
 	email := payload.Email
 
-	// sanitize again for security ?
+	// sanitize again for security
 	if !govalidator.IsEmail(email) {
 		return fiber.NewError(fiber.StatusInternalServerError, "Server error.")
 	}

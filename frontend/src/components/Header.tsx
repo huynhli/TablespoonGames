@@ -1,6 +1,6 @@
 type HeaderProps = {
-  onToggleTheme: () => void
-  darkMode: boolean
+    onToggleTheme: () => void
+    darkMode: boolean
 }
 
 export default function Header({ onToggleTheme, darkMode: darkMode} : HeaderProps){
