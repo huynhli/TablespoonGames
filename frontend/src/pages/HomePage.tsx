@@ -90,7 +90,7 @@ export default function HomePage(){
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     Founded in 2025 in Toronto, Canada, tbsp games is a team of diverse, 
                     international creatives that have a love and passion for making games that are not too big, and not too small.
-                    Currently, we are developing <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">Licht</a>, a 2D story-driven action puzzle game.
+                    Currently, we are developing <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>Licht</a>, a 2D story-driven action puzzle game.
                 </p>
             </section>
 
@@ -105,7 +105,7 @@ export default function HomePage(){
                     action-packed fighting, and puzzles to create a unique single-player experience.
                 </p>
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
-                    Follow along with our journey <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className="underline text-purple-500 hover:text-purple-600">here!</a>
+                    Follow along with our journey <a target="_blank" rel="noopener noreferrer" href="https://liamhuynh.pages.dev" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>here!</a>
                 </p>
             </section>
 
@@ -115,23 +115,23 @@ export default function HomePage(){
                 <div className={`h-1 my-3 ${ darkMode ? `bg-white` : `bg-zinc-900`}`}></div>
                 <div className={`flex flex-row py-2`}>
                     <div className={`flex flex-col w-[50%] items-center`}>
-                        <h2 className={`mt-3 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Liam Huynh</h2>
-                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Principal Designer, Web Developer</h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/liam-huynh-91aa1a1a1/" className="underline text-purple-500 hover:text-purple-600">@liamhuynh</a>
-                        <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Andrew Wang</h2>
+                        <h2 className={`mt-3 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Andrew Wang</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Lead Composer</h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/tgw_wang/" className="underline text-purple-500 hover:text-purple-600">@tgw_wang</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/tgw_wang/" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>@tgw_wang</a>
                         <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Rohith Rajmohan</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Principal Artist</h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/all._.brite/" className="underline text-purple-500 hover:text-purple-600">@all._.brite</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/all._.brite/" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>@all._.brite</a>
+                        <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Liam Huynh</h2>
+                            <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Full-stack Developer</h3>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/liam-huynh-91aa1a1a1/" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>@liamhuynh</a>
                     </div>
                     <div className={`flex flex-col w-[50%] items-center`}>
                         <h2 className={`mt-3 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Felix (Tae Yeon) Ha</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Lead Designer</h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/taeyeonha/" className="underline text-purple-500 hover:text-purple-600">@taeyeonha</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/taeyeonha/" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>@taeyeonha</a>
                         <h2 className={`mt-5 font-bold ${ darkMode ? `text-white` : `text-zinc-900`}`}>Jannah Kandil</h2>
                             <h3 className={`leading-tight ${ darkMode ? `text-white` : `text-zinc-900`}`}>Art Director</h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jannahkandil_/" className="underline text-purple-500 hover:text-purple-600">@jannahkandil_</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jannahkandil_/" className={`underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>@jannahkandil_</a>
                     </div>
                 </div>
             </section>
@@ -144,7 +144,7 @@ export default function HomePage(){
                 <p className={`${ darkMode ? `text-white` : `text-zinc-900`}`}>
                     Subscribe to the tbsp games newsletter for our latest news and updates!
                 </p>
-                <a onClick={goToPrivacyPolicy} className="cursor-pointer underline text-purple-500 hover:text-purple-600">Privacy Policy</a>
+                <a onClick={goToPrivacyPolicy} className={`cursor-pointer underline ${darkMode ? 'text-purple-500 hover:text-purple-600': 'text-purple-700 hover:text-purple-500'}`}>Privacy Policy</a>
                 <form className={`flex flex-col items-center`} onSubmit={subscribeEmail}>
                     <input
                         className="bg-white text-gray-800 my-2 px-2 w-80 rounded-md"
